@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0" />
+		<title>阳光明媚</title>
+		<style type="text/css">
+			* {
+				padding: 0;
+				margin: 0;
+				list-style: none;
+				font-family: STKaiti;
+			}
+			
+			html,
+			body {
+				width: 100%;
+				height: 100%;
+			}
+			
+			#wrap {
+				width: 330px;
+				height: 100%;
+				position: relative;
+				margin: 0 auto;
+			}
+			
+			#music {
+				width: 330px;
+				height: 86px;
+				margin: 0 auto;
+			}
+			
+			#canvas {
+				width: 330px;
+				height: 300px;
+				margin: 0 auto;
+			}
+			
+			canvas {
+				background: lemonchiffon;
+			}
+			
+			#wrap>section {
+				width: 290px;
+				height: 300px;
+				margin: 0 auto;
+				position: absolute;
+				left: 20px;
+				top: 86px;
+				line-height: 30px;
+				text-indent: 2em;
+				overflow: scroll;
+			}
+			
+			.personage {
+				width: 100%;
+				height: 50px;
+				text-align: center;
+				line-height: 50px;
+				font-size: 25px;
+				background: #FFFACD;
+				border-radius: 10px;
+				margin-top: 10px;
+			}
+			
+			#personage_zl {
+				width: 100%;
+				height: 100%;
+				position: absolute;
+				left: 0;
+				top: 0;
+				display: none;
+			}
+			
+			#personage_zl>p {
+				width: 100%;
+				height: 40px;
+				background: gray;
+				text-align: right;
+				line-height: 40px;
+				font-size: 25px;
+			}
+			
+			#personage_zl>section {
+				width: 100%;
+				height: 200px;
+				background: white;
+			}
+			
+			#personage_zl>section>ul {
+				width: 330px;
+				height: 200px;
+				margin: 0 auto;
+			}
+			
+			#personage_zl>section>ul>li {
+				width: 330px;
+				height: 40px;
+				text-align: left;
+				line-height: 40px;
+			}
+			
+			#galaxy {
+				width: 100%;
+				height: 100%;
+				background: black;
+				position: relative;
+			}
+			
+			.content {
+				position: absolute;
+				left: 50%;
+				top: 50%;
+				transform: translate(-50%, -50%);
+				border-radius: 50%;
+			}
+			
+			.sun {
+				width: 60px;
+				height: 60px;
+				background: gold radial-gradient(circle, white, gold);
+				box-shadow: 0 0 40px 10px gold;
+			}
+			
+			.earth {
+				width: 300px;
+				height: 300px;
+				border: 2px solid rgba(255, 255, 255, 0);
+				animation: move 10s linear infinite;
+			}
+			
+			.earth::before {
+				content: "";
+				display: block;
+				width: 20px;
+				height: 20px;
+				background: gold radial-gradient(circle, green, blue);
+				box-shadow: 0 0 40px 10px blue;
+				border-radius: 50%;
+				position: absolute;
+				left: 50%;
+				transform: translate(-50%, -50%);
+			}
+			/*动画
+        */
+			
+			@keyframes move {
+				0% {
+					transform: translate(-50%, -50%) rotate(0deg);
+				}
+				100% {
+					transform: translate(-50%, -50%) rotate(360deg);
+				}
+			}
+		</style>
+	</head>
+
+	<body>
+		<script src="hammer.min.js" type="text/javascript" charset="utf-8"></script>
+		<div id="wrap">
+			<div id="music">
+				<iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width=330 height=86 src="//music.163.com/outchain/player?type=2&id=411315173&auto=0&height=66"></iframe>
+			</div>
+			<div id="canvas">
+				<canvas id="text" width="330px" height="300px"></canvas>
+			</div>
+			<section>
+				<p>一个月来，他每天早上都去食堂给女神买早餐，但女神就是不肯和他在一起。卖面包的姑娘每天都在等着他来，然后红着脸递给他最热乎的面包。食堂大妈看在眼里就对他说：“小伙子，还是放弃不喜欢你的姑娘吧，从我们这找一个多好。”他总是笑着点点头。果然，一个月后，他放弃了女神，和食堂大妈走到了一起</p>
+			</section>
+			<div class="personage">查看个人资料</div>
+			<div class="personage">查看个人爱好</div>
+			<div class="personage">查看个人成就</div>
+		</div>
+		<div id="personage_zl">
+			<p>返回</p>
+			<section>
+				<ul>
+					<li>姓名：LR</li>
+					<li>性别：男</li>
+					<li>年龄： 18</li>
+					<li>毕业院校：--------</li>
+					<li>地址：----------</li>
+				</ul>
+			</section>
+			<div id="galaxy">
+				<div class="sun content"></div>
+				<div class="earth content">
+				</div>
+			</div>
+		</div>
+
+		<script type="text/javascript">
+			function draw() {
+				var canvas = document.getElementById("text");
+				if(!canvas.getContext) return;
+				var ctx = canvas.getContext("2d");
+				//开始代码
+				ctx.beginPath();
+				for(var i = 0; i < 9; i++) {
+					ctx.moveTo(20, 30 + 30 * i);
+					ctx.lineTo(310, 30 + 30 * i);
+				}
+				ctx.stroke();
+				ctx.closePath();
+			}
+			draw();
+			//个人资料
+			var personagezl = document.getElementById("personage_zl");
+			var przl = document.querySelector("#wrap>div:nth-of-type(3)");
+			var back = document.querySelector("#personage_zl>p");
+
+			var pzl = new Hammer(przl);
+			pzl.on("tap", function(e) {
+				personagezl.style.display = "block";
+			})
+			var back = new Hammer(back);
+			back.on("tap", function(e) {
+				personagezl.style.display = "none";
+			})
+		</script>
+	</body>
+
+</html>
