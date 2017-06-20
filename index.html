@@ -1,0 +1,468 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0" />
+		<title>LR个人主页</title>
+		<link rel="stylesheet" type="text/css" href="animate.css"/>
+		<style type="text/css">
+			* {
+				padding: 0;
+				margin: 0;
+				list-style: none;
+				font-family: STKaiti;
+			}
+			
+			html,
+			body {
+				width: 100%;
+				height: 100%;
+			}
+			/*首页*/
+			
+			#wrap {
+				width: 330px;
+				height: 100%;
+				position: relative;
+				margin: 0 auto;
+			}
+			
+			#music {
+				width: 330px;
+				height: 86px;
+				margin: 0 auto;
+			}
+			
+			#canvastext {
+				width: 330px;
+				height: 300px;
+				margin: 0 auto;
+			}
+			
+			#canvastext>canvas {
+				background: lemonchiffon;
+			}
+			
+			#wrap>section {
+				width: 290px;
+				height: 300px;
+				margin: 0 auto;
+				position: absolute;
+				left: 20px;
+				top: 86px;
+				line-height: 30px;
+				text-indent: 2em;
+				overflow: scroll;
+			}
+			
+			.personage {
+				width: 100%;
+				height: 50px;
+				text-align: center;
+				line-height: 50px;
+				font-size: 25px;
+				background: #FFFACD;
+				border-radius: 10px;
+				margin-top: 10px;
+			}
+			/*个人资料*/
+			
+			#personage_zl {
+				width: 100%;
+				height: 100%;
+				position: absolute;
+				left: 0;
+				top: 0;
+				display: none;
+			}
+			
+			#personage_zl>p {
+				width: 100%;
+				height: 40px;
+				background: gray;
+				text-align: right;
+				line-height: 40px;
+				font-size: 25px;
+			}
+			
+			#personage_zl>section {
+				width: 100%;
+				height: 200px;
+				background: url(https://ss0.bdstatic.com/70cFuHSh_Q1YnxGkpoWK1HF6hhy/it/u=3539642908,1748066098&fm=26&gp=0.jpg) no-repeat;
+				background-size: 100% 100%;
+			}
+			
+			#personage_zl>section>ul {
+				width: 330px;
+				height: 200px;
+				margin: 0 auto;
+			}
+			
+			#personage_zl>section>ul>li {
+				width: 330px;
+				height: 40px;
+				text-align: left;
+				line-height: 40px;
+				color: darkgoldenrod;
+			}
+			
+			#galaxy {
+				width: 100%;
+				height: 100%;
+				background: black;
+				position: relative;
+			}
+			
+			.content {
+				position: absolute;
+				left: 50%;
+				top: 50%;
+				transform: translate(-50%, -50%);
+				border-radius: 50%;
+			}
+			
+			.sun {
+				width: 60px;
+				height: 60px;
+				background: gold radial-gradient(circle, white, gold);
+				box-shadow: 0 0 40px 10px gold;
+			}
+			
+			.earth {
+				width: 300px;
+				height: 300px;
+				border: 2px solid rgba(255, 255, 255, 0.1);
+				animation: move 10s linear infinite;
+			}
+			
+			.earth::before {
+				content: "";
+				display: block;
+				width: 20px;
+				height: 20px;
+				background: gold radial-gradient(circle, green, blue);
+				box-shadow: 0 0 40px 10px blue;
+				border-radius: 50%;
+				position: absolute;
+				left: 50%;
+				transform: translate(-50%, -50%);
+			}
+			/*动画
+        */
+			
+			@keyframes move {
+				0% {
+					transform: translate(-50%, -50%) rotate(0deg);
+				}
+				100% {
+					transform: translate(-50%, -50%) rotate(360deg);
+				}
+			}
+			/*个人爱好*/
+			
+			#personage_ah {
+				width: 100%;
+				height: 100%;
+				background: gainsboro;
+				position: absolute;
+				left: 0;
+				top: 0;
+				display: none;
+			}
+			
+			#personage_ah>p {
+				width: 100%;
+				height: 40px;
+				background: gray;
+				text-align: right;
+				line-height: 40px;
+				font-size: 25px;
+			}
+			
+			.canvas {
+				width: 100%;
+				height: 200px;
+				display: flex;
+				background: url(https://ss1.bdstatic.com/70cFuXSh_Q1YnxGkpoWK1HF6hhy/it/u=488525661,1861578692&fm=26&gp=0.jpg) no-repeat;
+				background-size: 100% 100%;
+			}
+			
+			#canvas {
+				margin: auto;
+			}
+			#h{
+				width: 100%;
+				height: 50px;
+				text-align: center;
+				animation-delay: 1s;
+            	animation-duration: 5s;
+            	animation-iteration-count: 3;
+			}
+			#personage_ah>div:nth-of-type(2){
+				width: 100%;
+				height: 100%;
+				background: gainsboro;
+			}
+				/*个人成就*/
+			
+			#personage_cj {
+				width: 100%;
+				height: 100%;
+				background: gainsboro;
+				position: absolute;
+				left: 0;
+				top: 0;
+				display: none;
+			}
+			
+			#personage_cj>button{
+				width: 120px;
+				height: 40px;
+				position: absolute;
+				right: 10px;
+				top: 0;
+				text-align: center;
+				line-height: 40px;
+				font-size: 20px;
+			}
+			#personage_cj>div:nth-of-type(1){
+				width:300px;
+				height:200px;
+				margin: 60px auto;
+				overflow: hidden;
+				position: relative;
+			}
+			#personage_cj>div:nth-of-type(1)>ul{
+				width: 900px;
+				height: 200px;
+				position: absolute;
+				left: 0;
+				top: 0;
+				animation: lbt 12s infinite;
+            	animation-timing-function: steps(1,start);
+			}
+			#personage_cj>div:nth-of-type(1)>ul>li{
+				width: 300px;
+				height: 200px;
+				float: left;
+			}
+			#personage_cj>div:nth-of-type(1)>ul>li>img{
+				width: 300px;
+				height: 200px;
+				background-size: 100% 100%;
+			}
+			@keyframes lbt {
+				0% {
+					left:0;
+				}
+				33%{
+					left: -300px;
+				}
+				66%{
+					left: -600px;
+				}
+				100% {
+					left: 0px;
+				}
+			}
+		</style>
+	</head>
+
+	<body>
+		<script src="hammer.min.js" type="text/javascript" charset="utf-8"></script>
+		<script src="wow.js" type="text/javascript" charset="utf-8"></script>
+		<div id="wrap">
+			<div id="music">
+				<iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width=330 height=86 src="//music.163.com/outchain/player?type=2&id=411315173&auto=0&height=66"></iframe>
+			</div>
+			<div id="canvastext">
+				<canvas id="text" width="330px" height="300px"></canvas>
+			</div>
+			<section>
+				<p>一个月来，他每天早上都去食堂给女神买早餐，但女神就是不肯和他在一起。卖面包的姑娘每天都在等着他来，然后红着脸递给他最热乎的面包。食堂大妈看在眼里就对他说：“小伙子，还是放弃不喜欢你的姑娘吧，从我们这找一个多好。”他总是笑着点点头。果然，一个月后，他放弃了女神，和食堂大妈走到了一起</p>
+			</section>
+			<div class="personage">查看个人资料</div>
+			<div class="personage">查看个人爱好</div>
+			<div class="personage">查看个人成就</div>
+		</div>
+		<!--个人资料-->
+		<div id="personage_zl">
+			<p>返回</p>
+			<section>
+				<ul>
+					<li>姓名：LR</li>
+					<li>性别：女</li>
+					<li>年龄： 18</li>
+					<li>毕业院校：--------</li>
+					<li>地址：----------</li>
+				</ul>
+			</section>
+			<div id="galaxy">
+				<div class="sun content"></div>
+				<div class="earth content">
+				</div>
+			</div>
+		</div>
+		<!--个人爱好-->
+		<div id="personage_ah">
+			<p>返回</p>
+			<div class="canvas">
+				<canvas id="canvas" width="200" height="200"></canvas>
+			</div>
+			<h1 class="animated flip" id="h">No, I like to play dama</h1>
+			<div><h4>On the dema technique</h4>
+				<p>1,Jian ji In general, he studies W in class one. So you try not to play with him first class, so he's probably going to be level <br>
+					2, you're going to get the tower 2, you're going to see the soldier line, and then you're going to have Q direct E, but don't get him, he's going to open W and you're going to go away. You'll find her dying. 
+					<br>3, the raven It's all 3 levels. Raven likes to come over and lie to your E. He's going to walk up to W you, you're going to open E and he's going to go straight to E, and you don't have an E. So you just need the Q. Remember riven is not QA you can't kill E. 3 PS Cloth a 5 red, etc. 6. There's nothing to say. <br>
+						4, weapons Run after Q. He dares to cross the line Q and you will be us. Be careful not to roll with weapons. Half the gun Five monkeys He's going to come over to Q and you're in general W. You need to know if the monkey is really open, and you know what a monkey W is. He played you two times and you should probably know he's gone. Next time she's playing like this you're going to go straight to the Q and then you're going to go out and wait for him to come out and see what happens when you don't give Q 6 Locke I don't think so. I usually run half of QE. Locke, who is going to play, is completely unkind. You'll need to hit the wild dad at this time <br>
+							5, the stray No solution... If you choose to be a homeless person, you will be too two. 8 Timor I'm not good at it. I need help The head of the alchemy Late in the class, your early estimates are good, but the latter is weak. So you don't have to pick galen.</p>
+			</div>
+		</div>
+		<!--个人成就-->
+		<div id="personage_cj">
+			<button class="wow rollIn" data-wow-delay="1s" data-wow-duration="5s">返回</button>
+			<div class="wow rollIn" data-wow-delay="0.5s" data-wow-duration="2s">
+			<ul>
+				<li><img src="https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1498567600&di=e8ad3752389cb9a1d65bb6650fcf10a7&imgtype=jpg&er=1&src=http%3A%2F%2Fs11.sinaimg.cn%2Fmiddle%2F477809adtc55308c7ae0a%26amp%3B690" alt="" /></li>
+				<li><img src="https://ss0.bdstatic.com/70cFvHSh_Q1YnxGkpoWK1HF6hhy/it/u=2992571788,1793464836&fm=26&gp=0.jpg" alt="" /></li>
+				<li><img src="https://ss1.bdstatic.com/70cFuXSh_Q1YnxGkpoWK1HF6hhy/it/u=1183169574,4248188565&fm=26&gp=0.jpg" alt="" /></li>
+			</ul>
+			</div>
+			<p class="wow rollIn bg-red" data-wow-iteration="1">活到现在已经是个成就了</p>
+		</div>
+		<script type="text/javascript">
+			function drawText() {
+				var canvasText = document.getElementById("text");
+				if(!canvasText.getContext) return;
+				var ctx = canvasText.getContext("2d");
+				//开始代码
+				ctx.beginPath();
+				for(var i = 0; i < 9; i++) {
+					ctx.moveTo(20, 30 + 30 * i);
+					ctx.lineTo(310, 30 + 30 * i);
+				}
+				ctx.stroke();
+				ctx.closePath();
+			}
+			drawText();
+			//个人资料
+			var personagezl = document.getElementById("personage_zl");
+			var przl = document.querySelector("#wrap>div:nth-of-type(3)");
+			var back = document.querySelector("#personage_zl>p");
+
+			var pzl = new Hammer(przl);
+			pzl.on("tap", function(e) {
+				personagezl.style.display = "block";
+			})
+			var back = new Hammer(back);
+			back.on("tap", function(e) {
+				personagezl.style.display = "none";
+			})
+			//个人爱好
+			var personageah = document.getElementById("personage_ah");
+			var prah = document.querySelector("#wrap>div:nth-of-type(4)");
+			var backah = document.querySelector("#personage_ah>p");
+
+			var prah = new Hammer(prah);
+			prah.on("tap", function(e) {
+				personageah.style.display = "block";
+			})
+			var backah = new Hammer(backah);
+			backah.on("tap", function(e) {
+				personageah.style.display = "none";
+			})
+
+			
+
+			function draw() {
+				var canvas = document.getElementById("canvas");
+				if(!canvas.getContext) return;
+				var ctx = canvas.getContext("2d");
+				//开始代码
+				darwPointers(ctx);
+				drawBoard(ctx);
+			}
+			draw();
+			//绘制所有的指针
+			function darwPointers(ctx) {
+				var pi = Math.PI;
+				requestAnimationFrame(function step() {
+					ctx.clearRect(0, 0, 200, 200);
+					drawBoard(ctx);
+					var date = new Date();
+					var secondDeg = pi / 30 * date.getSeconds();
+					var minuteDeg = pi / 30 * date.getMinutes() + secondDeg / 60;
+					var hoursDeg = pi / 6 * date.getHours() + minuteDeg / 12;
+					darwPointer(6, "black", 35, hoursDeg, ctx);
+					darwPointer(4, "red", 50, minuteDeg, ctx);
+					darwPointer(2, "yellow", 60, secondDeg, ctx);
+
+					requestAnimationFrame(step);
+				})
+
+			}
+			//绘制单个的指针
+			function darwPointer(width, color, length, deg, ctx) {
+				var pi = Math.PI;
+				ctx.save();
+				ctx.translate(100, 100);
+				ctx.rotate(-pi / 2 + deg);
+				ctx.strokeStyle = color;
+				ctx.lineCap = "round";
+				ctx.lineWidth = width;
+				ctx.beginPath();
+				ctx.moveTo(-5, 0);
+				ctx.lineTo(length, 0);
+				ctx.stroke();
+
+				ctx.restore();
+
+			}
+
+			//绘制表盘
+			function drawBoard(ctx) {
+				var pi = Math.PI;
+				ctx.save();
+				ctx.translate(100, 100);
+				ctx.beginPath();
+//				ctx.arc(0, 0, 100, 0, 2 * pi);
+				ctx.stroke();
+
+				for(var i = 0; i < 60; i++) {
+					ctx.save();
+					if(i % 5 == 0) {
+						ctx.strokeStyle = "red";
+						ctx.lineWidth = 5;
+						ctx.lineCap = "round";
+					}
+					ctx.rotate(-pi / 2 + i * pi / 30);
+					ctx.beginPath();
+					ctx.moveTo(70, 0);
+					ctx.lineTo(90, 0);
+					ctx.stroke();
+					ctx.restore();
+				}
+
+				ctx.restore();
+
+			}
+			//个人成就
+			var personagecj = document.getElementById("personage_cj");
+			var prcj = document.querySelector("#wrap>div:nth-of-type(5)");
+			var backcj = document.querySelector("#personage_cj>button");
+
+			var prcj = new Hammer(prcj);
+			prcj.on("tap", function(e) {
+				personagecj.style.display = "block";
+			})
+			var backcj = new Hammer(backcj);
+			backcj.on("tap", function(e) {
+				personagecj.style.display = "none";
+			})
+			
+			new WOW().init();
+		</script>
+	</body>
+
+</html>
